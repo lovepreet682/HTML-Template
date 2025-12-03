@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramgarhia Cafe</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        color: #3a2a1a;
+        line-height: 1.6;
+        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #5d4037;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #6d4c41;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #d4a574;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #d4a574;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #d4a574 0%, #b8935f 100%);
+        color: white;
+        padding: 0.75rem 1.8rem;
+        border-radius: 30px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+      }
+
+      .hero {
+        width: 100%;
+        height: 90%;
+        background: linear-gradient(
+            rgba(58, 42, 26, 0.4),
+            rgba(58, 42, 26, 0.4)
+          ),
+          url("https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1200")
+            center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-content p {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        padding: 0.75rem 1.8rem;
+        border-radius: 30px;
+        border: 2px solid white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: #5d4037;
+      }
+
+      .section {
+        padding: 5rem 5%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #5d4037;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #d4a574, #b8935f);
+      }
+
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .coffee-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .coffee-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .coffee-card-img {
+        width: 100%;
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .coffee-card-content {
+        padding: 1.5rem;
+      }
+
+      .coffee-card-content h3 {
+        font-size: 1.4rem;
+        color: #5d4037;
+        margin-bottom: 0.5rem;
+      }
+
+      .coffee-card-content p {
+        color: #8d6e63;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .coffee-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #d4a574;
+      }
+
+      .btn-small {
+        background: #f5f5f5;
+        color: #5d4037;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-small:hover {
+        background: #d4a574;
+        color: white;
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-img {
+        width: 100%;
+        height: 400px;
+        background: url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800")
+          center/cover;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        color: #5d4037;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        color: #6d4c41;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+      }
+
+      .highlights {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .highlight-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .highlight-icon {
+        font-size: 2rem;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .gallery-item {
+        height: 280px;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.15);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(93, 64, 55, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: #f9f5f0;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      }
+
+      .stars {
+        color: #d4a574;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-text {
+        color: #6d4c41;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .customer-name {
+        font-weight: 700;
+        color: #5d4037;
+      }
+
+      .location-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 350px;
+        background: linear-gradient(135deg, #e8dcc8 0%, #d4c4b0 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #8d6e63;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .location-info h3 {
+        font-size: 1.8rem;
+        color: #5d4037;
+        margin-bottom: 1rem;
+      }
+
+      .location-info p {
+        color: #6d4c41;
+        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+      }
+
+      .location-info strong {
+        color: #5d4037;
+      }
+
+      .contact-form-container {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #f9f5f0;
+        padding: 3rem;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .form-group label {
+        margin-bottom: 0.5rem;
+        color: #5d4037;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 0.9rem;
+        border: 2px solid #e8dcc8;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #d4a574;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #d4a574 0%, #b8935f 100%);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+      }
+
+      .footer {
+        background: #3a2a1a;
+        color: white;
+        padding: 3rem 5%;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #d4a574;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer-links a {
+        color: #c7b299;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #d4a574;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .social-icon {
+        color: #c7b299;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .social-icon:hover {
+        color: #d4a574;
+        transform: scale(1.2);
+      }
+
+      .copyright {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(199, 178, 153, 0.3);
+        color: #c7b299;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1rem 3%;
+        }
+
+        .nav-links {
+          gap: 1.5rem;
+          font-size: 0.9rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.1rem;
+        }
+
+        .section {
+          padding: 3rem 4%;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .about-container,
+        .location-container {
+          grid-template-columns: 1fr;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form-container {
+          padding: 2rem;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">☕ Ramgarhia Cafe</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Locations</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="btn-primary">Book a Table</button></li>
+      </ul>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1 id="hero-headline">Sip, Relax, Repeat.</h1>
+        <p id="hero-subtext">
+          A cozy corner in the city serving freshly brewed coffee, desserts, and
+          good vibes.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary">View Menu</button>
+          <button class="btn-secondary">Order Online</button>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Items -->
+    <section class="section" id="menu">
+      <h2 class="section-title">Our Signature Coffee</h2>
+      <div class="featured-grid">
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Caramel Latte</h3>
+            <p>
+              Rich espresso blended with steamed milk and sweet caramel syrup
+            </p>
+            <div class="coffee-card-footer">
+              <span class="price">$5.50</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Vanilla Cold Brew</h3>
+            <p>Smooth cold brew infused with Madagascar vanilla essence</p>
+            <div class="coffee-card-footer">
+              <span class="price">$6.00</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Mocha Delight</h3>
+            <p>
+              Decadent chocolate meets bold espresso topped with whipped cream
+            </p>
+            <div class="coffee-card-footer">
+              <span class="price">$5.75</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Hazelnut Macchiato</h3>
+            <p>Espresso marked with foamy milk and roasted hazelnut flavor</p>
+            <div class="coffee-card-footer">
+              <span class="price">$5.25</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Cappuccino Classic</h3>
+            <p>Perfect balance of espresso, steamed milk, and velvety foam</p>
+            <div class="coffee-card-footer">
+              <span class="price">$4.75</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="coffee-card">
+          <div
+            class="coffee-card-img"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=400');
+            "
+          ></div>
+          <div class="coffee-card-content">
+            <h3>Iced Matcha Latte</h3>
+            <p>
+              Japanese matcha green tea with milk over ice for a refreshing
+              treat
+            </p>
+            <div class="coffee-card-footer">
+              <span class="price">$5.50</span>
+              <button class="btn-small">Order Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section class="section" id="about">
+      <h2 class="section-title" id="about-heading">Our Story</h2>
+      <div class="about-container">
+        <div class="about-img"></div>
+        <div class="about-text">
+          <p>
+            At Ramgarhia Cafe, we believe coffee is more than just a
+            beverage—it's an experience. Nestled in the heart of the city, our
+            cozy café has been serving the finest handcrafted coffee since 2015.
+          </p>
+          <p>
+            We source our beans from sustainable farms around the world,
+            ensuring every cup is rich, aromatic, and ethically produced. Our
+            baristas are passionate artisans who take pride in creating the
+            perfect brew for you.
+          </p>
+          <p>
+            Whether you're looking for a quiet corner to work, a place to catch
+            up with friends, or simply your daily caffeine fix, Brew &amp; Bliss
+            is your home away from home.
+          </p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">🌱</span>
+              <span><strong>Fresh Beans</strong></span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🛋️</span>
+              <span><strong>Cozy Ambience</strong></span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">📶</span>
+              <span><strong>Free Wi-Fi</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"
+            alt="Coffee"
+          />
+          <div class="gallery-overlay">Fresh Brewed</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400"
+            alt="Interior"
+          />
+          <div class="gallery-overlay">Cozy Interior</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400"
+            alt="Barista"
+          />
+          <div class="gallery-overlay">Expert Baristas</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400"
+            alt="Dessert"
+          />
+          <div class="gallery-overlay">Sweet Treats</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400"
+            alt="Latte Art"
+          />
+          <div class="gallery-overlay">Latte Art</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400"
+            alt="Ambience"
+          />
+          <div class="gallery-overlay">Perfect Vibes</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1675435646468-5c3b3e550331?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400"
+            alt="Coffee Beans"
+          />
+          <div class="gallery-overlay">Premium Beans</div>
+        </div>
+        <div class="gallery-item">
+          <img
+          src="https://images.unsplash.com/photo-1636366939393-7afc5eaf7707?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"w=400"
+          alt="Outdoor">
+          <div class="gallery-overlay">Outdoor Seating</div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="section">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Best coffee in town! The atmosphere is perfect for getting work
+            done, and the staff is incredibly friendly. My go-to spot every
+            morning!"
+          </p>
+          <p class="customer-name">— Sarah Mitchell</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "I absolutely love the cozy vibes and their signature caramel latte
+            is to die for. Brew &amp; Bliss has become my favorite weekend
+            hangout."
+          </p>
+          <p class="customer-name">— James Rodriguez</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "The quality of their coffee is exceptional. You can really taste
+            the difference with their fresh beans. Plus, the free Wi-Fi is a
+            lifesaver!"
+          </p>
+          <p class="customer-name">— Emily Chen</p>
+        </div>
+      </div>
+    </section>
+    <!-- Location Section -->
+    <section class="section" id="location">
+      <h2 class="section-title">Find Us</h2>
+      <div class="location-container">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.4835086965327!2d-73.98842941526068!3d40.773383297601185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2585e19db7623%3A0xbfbdd55280b8cbda!2s110%20W%20End%20Ave%2C%20New%20York%2C%20NY%2010023%2C%20USA!5e0!3m2!1sen!2sin!4v1764772281748!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="location-info">
+          <h3>Visit Us</h3>
+          <p id="cafe-address">
+            <strong>Address:</strong> 123 Coffee Street, Downtown District, CA
+            90210
+          </p>
+          <p id="cafe-phone"><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Hours:</strong></p>
+          <p>Monday - Friday: 7:00 AM - 8:00 PM</p>
+          <p>Saturday - Sunday: 8:00 AM - 9:00 PM</p>
+          <br /><button class="btn-primary">Get Directions</button>
+        </div>
+      </div>
+    </section>
+    <!-- Contact/Booking Section -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Book a Table</h2>
+      <div class="contact-form-container">
+        <form id="booking-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="date">Date *</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="time">Time *</label>
+              <input type="time" id="time" name="time" required />
+            </div>
+            <div class="form-group">
+              <label for="people">Number of People *</label>
+              <input
+                type="number"
+                id="people"
+                name="people"
+                min="1"
+                max="20"
+                required
+              />
+            </div>
+            <div class="form-group full-width">
+              <label for="message">Special Requests</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Any special requirements or preferences..."
+              ></textarea>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">Book a Table</button>
+        </form>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>☕ Ramgarhia Cafe</h3>
+          <p id="footer-tagline">Where every cup tells a story</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <span class="social-icon">📷</span>
+            <span class="social-icon">📘</span>
+            <span class="social-icon">💬</span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">© 2024 Ramgarhia Cafe. All rights reserved.</div>
+    </footer>
+    <script>
+      const defaultConfig = {
+        hero_headline: "Sip, Relax, Repeat.",
+        hero_subtext:
+          "A cozy corner in the city serving freshly brewed coffee, desserts, and good vibes.",
+        about_heading: "Our Story",
+        cafe_address: "123 Coffee Street, Downtown District, CA 90210",
+        cafe_phone: "(555) 123-4567",
+        footer_tagline: "Where every cup tells a story",
+        background_color: "#f5f0e8",
+        surface_color: "#ffffff",
+        text_color: "#3a2a1a",
+        primary_action_color: "#d4a574",
+        secondary_action_color: "#6d4c41",
+      };
+
+      async function onConfigChange(config) {
+        document.body.style.background =
+          config.background_color || defaultConfig.background_color;
+
+        document.getElementById("hero-headline").textContent =
+          config.hero_headline || defaultConfig.hero_headline;
+        document.getElementById("hero-subtext").textContent =
+          config.hero_subtext || defaultConfig.hero_subtext;
+        document.getElementById("about-heading").textContent =
+          config.about_heading || defaultConfig.about_heading;
+
+        const addressElement = document.getElementById("cafe-address");
+        addressElement.innerHTML = `<strong>Address:</strong> ${
+          config.cafe_address || defaultConfig.cafe_address
+        }`;
+
+        const phoneElement = document.getElementById("cafe-phone");
+        phoneElement.innerHTML = `<strong>Phone:</strong> ${
+          config.cafe_phone || defaultConfig.cafe_phone
+        }`;
+
+        document.getElementById("footer-tagline").textContent =
+          config.footer_tagline || defaultConfig.footer_tagline;
+
+        const backgroundColor =
+          config.background_color || defaultConfig.background_color;
+        const surfaceColor =
+          config.surface_color || defaultConfig.surface_color;
+        const textColor = config.text_color || defaultConfig.text_color;
+        const primaryColor =
+          config.primary_action_color || defaultConfig.primary_action_color;
+        const secondaryColor =
+          config.secondary_action_color || defaultConfig.secondary_action_color;
+
+        document.body.style.background = backgroundColor;
+
+        document
+          .querySelectorAll(".coffee-card, .contact-form-container")
+          .forEach((el) => {
+            el.style.background = surfaceColor;
+          });
+
+        document
+          .querySelectorAll(
+            ".section-title, .about-text h2, h3, .customer-name, .location-info h3, .form-group label, .logo"
+          )
+          .forEach((el) => {
+            el.style.color = textColor;
+          });
+
+        document.querySelectorAll(".nav-links a").forEach((el) => {
+          el.style.color = secondaryColor;
+        });
+
+        document.querySelectorAll(".btn-primary, .submit-btn").forEach((el) => {
+          el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+        });
+
+        document.querySelectorAll(".price").forEach((el) => {
+          el.style.color = primaryColor;
+        });
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () =>
+                  config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                },
+              },
+              {
+                get: () => config.surface_color || defaultConfig.surface_color,
+                set: (value) => {
+                  config.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                },
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                },
+              },
+              {
+                get: () =>
+                  config.primary_action_color ||
+                  defaultConfig.primary_action_color,
+                set: (value) => {
+                  config.primary_action_color = value;
+                  window.elementSdk.setConfig({ primary_action_color: value });
+                },
+              },
+              {
+                get: () =>
+                  config.secondary_action_color ||
+                  defaultConfig.secondary_action_color,
+                set: (value) => {
+                  config.secondary_action_color = value;
+                  window.elementSdk.setConfig({
+                    secondary_action_color: value,
+                  });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined,
+          }),
+          mapToEditPanelValues: (config) =>
+            new Map([
+              [
+                "hero_headline",
+                config.hero_headline || defaultConfig.hero_headline,
+              ],
+              [
+                "hero_subtext",
+                config.hero_subtext || defaultConfig.hero_subtext,
+              ],
+              [
+                "about_heading",
+                config.about_heading || defaultConfig.about_heading,
+              ],
+              [
+                "cafe_address",
+                config.cafe_address || defaultConfig.cafe_address,
+              ],
+              ["cafe_phone", config.cafe_phone || defaultConfig.cafe_phone],
+              [
+                "footer_tagline",
+                config.footer_tagline || defaultConfig.footer_tagline,
+              ],
+            ]),
+        });
+      }
+
+      document
+        .getElementById("booking-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const booking = {
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            date: formData.get("date"),
+            time: formData.get("time"),
+            people: formData.get("people"),
+            message: formData.get("message"),
+          };
+
+          const successMessage = document.createElement("div");
+          successMessage.style.cssText =
+            "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); z-index: 10000; text-align: center;";
+          successMessage.innerHTML = `
+        <h3 style="color: #5d4037; margin-bottom: 1rem; font-size: 1.5rem;">✅ Booking Confirmed!</h3>
+        <p style="color: #6d4c41; margin-bottom: 1.5rem;">Thank you for your reservation. We'll send a confirmation to ${booking.email}</p>
+        <button onclick="this.parentElement.remove()" style="background: linear-gradient(135deg, #d4a574 0%, #b8935f 100%); color: white; padding: 0.75rem 2rem; border: none; border-radius: 25px; font-weight: 600; cursor: pointer;">Close</button>
+      `;
+          document.body.appendChild(successMessage);
+
+          e.target.reset();
+
+          setTimeout(() => {
+            successMessage.remove();
+          }, 5000);
+        });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9a83b4fd918c54de',t:'MTc2NDc3MTY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
