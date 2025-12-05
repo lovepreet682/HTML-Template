@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramgarhia Events - Luxury Event Management</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      }
+
+      .gold-gradient {
+        background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+      }
+
+      .section-padding {
+        padding: 5% 8%;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out forwards;
+      }
+
+      .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out forwards;
+      }
+
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+      }
+
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .btn-primary {
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+      }
+
+      .portfolio-image {
+        height: 100%;
+        min-height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .portfolio-item:hover .portfolio-image {
+        transform: scale(1.1);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+      }
+
+      input,
+      textarea {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #d4af37;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .mobile-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .mobile-menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #d4af37;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-toggle {
+          display: flex;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="gradient-bg text-white">
+    <div id="app-container" style="width: 100%">
+      <!-- Navigation -->
+      <nav
+        class="fixed w-full top-0 z-50 bg-black bg-opacity-90 backdrop-blur-md"
+      >
+        <div
+          class="section-padding flex justify-between items-center relative"
+          style="padding-top: 1.5%; padding-bottom: 1.5%"
+        >
+          <h1
+            id="nav-company-name"
+            class="font-display text-3xl font-bold"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            "
+          >
+            Ramgarhia Events
+          </h1>
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link hover:text-yellow-400">Home</a>
+            <a href="#about" class="nav-link hover:text-yellow-400">About</a>
+            <a href="#services" class="nav-link hover:text-yellow-400"
+              >Services</a
+            >
+            <a href="#portfolio" class="nav-link hover:text-yellow-400"
+              >Portfolio</a
+            >
+            <a href="#testimonials" class="nav-link hover:text-yellow-400"
+              >Testimonials</a
+            >
+            <a href="#contact" class="nav-link hover:text-yellow-400"
+              >Contact</a
+            >
+          </div>
+          <a
+            href="#contact"
+            class="hidden md:block btn-primary px-6 py-2 rounded-full font-semibold"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+              color: #1a1a2e;
+            "
+          >
+            Book Now
+          </a>
+          <button
+            class="mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            aria-label="Toggle mobile menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" class="nav-link hover:text-yellow-400 text-lg"
+              >Home</a
+            >
+            <a href="#about" class="nav-link hover:text-yellow-400 text-lg"
+              >About</a
+            >
+            <a href="#services" class="nav-link hover:text-yellow-400 text-lg"
+              >Services</a
+            >
+            <a href="#portfolio" class="nav-link hover:text-yellow-400 text-lg"
+              >Portfolio</a
+            >
+            <a
+              href="#testimonials"
+              class="nav-link hover:text-yellow-400 text-lg"
+              >Testimonials</a
+            >
+            <a href="#contact" class="nav-link hover:text-yellow-400 text-lg"
+              >Contact</a
+            >
+            <a
+              href="#contact"
+              class="btn-primary px-6 py-3 rounded-full font-semibold text-center"
+              style="
+                background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+                color: #1a1a2e;
+              "
+            >
+              Book Now
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="relative min-h-full flex items-center justify-center"
+        style="padding-top: 10%; padding-bottom: 10%"
+      >
+        <div class="absolute inset-0 opacity-20">
+          <svg class="w-full h-full" viewbox="0 0 1920 1080" fill="none">
+            <circle
+              cx="400"
+              cy="400"
+              r="300"
+              fill="url(#gold-gradient)"
+              opacity="0.3"
+            />
+            <circle
+              cx="1500"
+              cy="700"
+              r="250"
+              fill="url(#gold-gradient)"
+              opacity="0.2"
+            />
+            <defs>
+              <lineargradient
+                id="gold-gradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" style="stop-color: #d4af37" />
+                <stop offset="100%" style="stop-color: #f4e4c1" />
+              </lineargradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="section-padding text-center z-10 max-w-5xl mx-auto">
+          <h2
+            id="hero-tagline"
+            class="font-display text-6xl md:text-7xl font-bold mb-6 animate-fade-in-up"
+            style="color: #d4af37"
+          >
+            Creating Unforgettable Moments
+          </h2>
+          <p
+            id="hero-subtitle"
+            class="text-2xl md:text-3xl mb-8 animate-fade-in-up"
+            style="
+              animation-delay: 0.2s;
+              opacity: 0;
+              animation-fill-mode: forwards;
+            "
+          >
+            Luxury Event Planning &amp; Design
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up"
+            style="
+              animation-delay: 0.4s;
+              opacity: 0;
+              animation-fill-mode: forwards;
+            "
+          >
+            <a
+              href="#services"
+              class="btn-primary px-8 py-4 rounded-full font-semibold text-lg"
+              style="
+                background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+                color: #1a1a2e;
+              "
+            >
+              Plan Your Event
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-4 rounded-full font-semibold text-lg border-2 hover:bg-white hover:text-gray-900 transition-all"
+              style="border-color: #d4af37; color: #d4af37"
+            >
+              Request a Quote
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section
+        id="about"
+        class="section-padding"
+        style="background: rgba(255, 255, 255, 0.03)"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-in-left">
+              <h2
+                id="about-title"
+                class="font-display text-5xl font-bold mb-6"
+                style="color: #d4af37"
+              >
+                About Us
+              </h2>
+              <p class="text-lg leading-relaxed mb-6">
+                Welcome to Ramgarhia Events, where dreams come to life and
+                celebrations become cherished memories. With over a decade of
+                experience in crafting extraordinary moments, we specialize in
+                transforming your vision into a breathtaking reality.
+              </p>
+              <p class="text-lg leading-relaxed mb-6">
+                Our passionate team of creative professionals understands that
+                every event tells a unique story. From intimate gatherings to
+                grand celebrations, we orchestrate every detail with precision,
+                elegance, and unwavering dedication to excellence.
+              </p>
+              <div class="space-y-4 mt-8">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-4">✨</span>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">
+                      Creative Excellence
+                    </h4>
+                    <p class="text-gray-300">
+                      Innovative designs that reflect your unique style
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-4">🎯</span>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">
+                      Seamless Execution
+                    </h4>
+                    <p class="text-gray-300">
+                      Flawless coordination from start to finish
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-4">💎</span>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">
+                      Luxury Experience
+                    </h4>
+                    <p class="text-gray-300">
+                      Premium quality in every aspect of your event
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="animate-slide-in-right">
+              <svg viewbox="0 0 400 500" class="w-full">
+                <defs>
+                  <lineargradient
+                    id="card-gradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #d4af37" />
+                    <stop offset="100%" style="stop-color: #f4e4c1" />
+                  </lineargradient>
+                </defs>
+                <rect
+                  width="400"
+                  height="500"
+                  rx="20"
+                  fill="url(#card-gradient)"
+                  opacity="0.2"
+                />
+                <circle cx="200" cy="150" r="80" fill="#d4af37" />
+                <path
+                  d="M 200 100 L 220 140 L 260 140 L 230 165 L 245 205 L 200 180 L 155 205 L 170 165 L 140 140 L 180 140 Z"
+                  fill="white"
+                />
+                <text
+                  x="200"
+                  y="260"
+                  font-family="Playfair Display"
+                  font-size="28"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  10+ Years
+                </text>
+                <text
+                  x="200"
+                  y="295"
+                  font-family="Montserrat"
+                  font-size="16"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Experience
+                </text>
+                <text
+                  x="200"
+                  y="350"
+                  font-family="Playfair Display"
+                  font-size="28"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  500+
+                </text>
+                <text
+                  x="200"
+                  y="385"
+                  font-family="Montserrat"
+                  font-size="16"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Events Completed
+                </text>
+                <text
+                  x="200"
+                  y="440"
+                  font-family="Playfair Display"
+                  font-size="28"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  100%
+                </text>
+                <text
+                  x="200"
+                  y="475"
+                  font-family="Montserrat"
+                  font-size="16"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  Client Satisfaction
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section id="services" class="section-padding">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              id="services-title"
+              class="font-display text-5xl font-bold mb-4"
+              style="color: #d4af37"
+            >
+              Our Services
+            </h2>
+            <p class="text-xl text-gray-300">
+              Comprehensive event solutions tailored to your needs
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Wedding Planning -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">💍</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Wedding Planning
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Your dream wedding brought to life with elegance and grace
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Complete ceremony &amp; reception
+                  coordination
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Vendor management &amp;
+                  negotiations
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Custom décor &amp; floral
+                  arrangements
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Timeline creation &amp; day-of
+                  coordination
+                </li>
+              </ul>
+            </div>
+            <!-- Birthday Parties -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">🎂</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Birthday Parties
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Celebrate life's special milestones with unforgettable parties
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Themed party design &amp; execution
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Entertainment &amp; activity
+                  planning
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Custom cake &amp; catering
+                  coordination
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Photography &amp; videography
+                  services
+                </li>
+              </ul>
+            </div>
+            <!-- Corporate Events -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">🏢</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Corporate Events
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Professional events that elevate your brand and impress clients
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Conference &amp; seminar
+                  organization
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Team building activities
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Product launches &amp; brand
+                  activations
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Award ceremonies &amp; galas
+                </li>
+              </ul>
+            </div>
+            <!-- Anniversary Celebrations -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">🥂</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Anniversary Celebrations
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Honor lasting love with elegant anniversary celebrations
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Intimate dinner parties to grand
+                  galas
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Romantic venue selection &amp;
+                  setup
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Memory wall &amp; photo displays
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Custom entertainment &amp; music
+                </li>
+              </ul>
+            </div>
+            <!-- Baby Showers -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">👶</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Baby Showers
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Welcome new life with beautiful, heartwarming celebrations
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Charming theme creation &amp; décor
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Game planning &amp; coordination
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Gift registry management
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Delightful treats &amp; favors
+                </li>
+              </ul>
+            </div>
+            <!-- Theme Parties -->
+            <div
+              class="hover-lift rounded-2xl p-8"
+              style="
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+              "
+            >
+              <div class="text-5xl mb-4">🎭</div>
+              <h3
+                class="font-display text-2xl font-bold mb-4"
+                style="color: #d4af37"
+              >
+                Theme Parties
+              </h3>
+              <p class="text-gray-300 mb-4">
+                Transform any occasion into an immersive themed experience
+              </p>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Creative concept development
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Complete venue transformation
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Costume &amp; prop coordination
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-2">✓</span>Themed food &amp; beverage menus
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Portfolio Section -->
+      <section
+        id="portfolio"
+        class="section-padding"
+        style="background: rgba(255, 255, 255, 0.03)"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              id="portfolio-title"
+              class="font-display text-5xl font-bold mb-4"
+              style="color: #d4af37"
+            >
+              Our Portfolio
+            </h2>
+            <p class="text-xl text-gray-300">
+              A glimpse into the unforgettable moments we've created
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Portfolio Item 1 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="wedding-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #ffd89b" />
+                    <stop offset="100%" style="stop-color: #f4c7ab" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#wedding-grad)" />
+                <circle cx="200" cy="120" r="40" fill="white" opacity="0.8" />
+                <path
+                  d="M 200 90 L 210 110 L 230 110 L 215 122 L 222 142 L 200 128 L 178 142 L 185 122 L 170 110 L 190 110 Z"
+                  fill="#d4af37"
+                />
+                <rect
+                  x="150"
+                  y="200"
+                  width="100"
+                  height="120"
+                  rx="5"
+                  fill="white"
+                  opacity="0.9"
+                />
+                <text
+                  x="200"
+                  y="260"
+                  font-family="Playfair Display"
+                  font-size="24"
+                  font-weight="bold"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  ELEGANT
+                </text>
+                <text
+                  x="200"
+                  y="290"
+                  font-family="Montserrat"
+                  font-size="14"
+                  fill="#333"
+                  text-anchor="middle"
+                >
+                  Wedding
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Romantic Garden Wedding
+                  </h4>
+                  <p class="text-sm">A breathtaking celebration of love</p>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio Item 2 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="birthday-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #a8edea" />
+                    <stop offset="100%" style="stop-color: #fed6e3" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#birthday-grad)" />
+                <circle cx="200" cy="140" r="50" fill="#d4af37" opacity="0.8" />
+                <text
+                  x="200"
+                  y="155"
+                  font-family="Playfair Display"
+                  font-size="48"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  30
+                </text>
+                <rect
+                  x="120"
+                  y="220"
+                  width="160"
+                  height="100"
+                  rx="10"
+                  fill="white"
+                  opacity="0.9"
+                />
+                <text
+                  x="200"
+                  y="265"
+                  font-family="Playfair Display"
+                  font-size="20"
+                  font-weight="bold"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  CELEBRATION
+                </text>
+                <text
+                  x="200"
+                  y="295"
+                  font-family="Montserrat"
+                  font-size="14"
+                  fill="#333"
+                  text-anchor="middle"
+                >
+                  Birthday Bash
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Milestone Birthday Party
+                  </h4>
+                  <p class="text-sm">A night to remember forever</p>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio Item 3 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="corporate-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #2c3e50" />
+                    <stop offset="100%" style="stop-color: #3498db" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#corporate-grad)" />
+                <rect
+                  x="150"
+                  y="100"
+                  width="100"
+                  height="100"
+                  fill="#d4af37"
+                  opacity="0.8"
+                />
+                <circle cx="200" cy="150" r="30" fill="white" />
+                <text
+                  x="200"
+                  y="250"
+                  font-family="Playfair Display"
+                  font-size="24"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  CORPORATE
+                </text>
+                <text
+                  x="200"
+                  y="280"
+                  font-family="Montserrat"
+                  font-size="14"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  Excellence
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Annual Gala Dinner
+                  </h4>
+                  <p class="text-sm">Professional elegance redefined</p>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio Item 4 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="anniversary-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #ee9ca7" />
+                    <stop offset="100%" style="stop-color: #ffdde1" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#anniversary-grad)" />
+                <circle
+                  cx="180"
+                  cy="140"
+                  r="35"
+                  fill="none"
+                  stroke="#d4af37"
+                  stroke-width="4"
+                />
+                <circle
+                  cx="220"
+                  cy="140"
+                  r="35"
+                  fill="none"
+                  stroke="#d4af37"
+                  stroke-width="4"
+                />
+                <text
+                  x="200"
+                  y="240"
+                  font-family="Playfair Display"
+                  font-size="32"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  25 Years
+                </text>
+                <text
+                  x="200"
+                  y="275"
+                  font-family="Montserrat"
+                  font-size="16"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  Together
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Silver Anniversary
+                  </h4>
+                  <p class="text-sm">Celebrating enduring love</p>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio Item 5 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="baby-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #b3e5fc" />
+                    <stop offset="100%" style="stop-color: #ffccbc" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#baby-grad)" />
+                <circle cx="200" cy="140" r="60" fill="white" opacity="0.9" />
+                <text
+                  x="200"
+                  y="165"
+                  font-family="Arial"
+                  font-size="64"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  👶
+                </text>
+                <text
+                  x="200"
+                  y="250"
+                  font-family="Playfair Display"
+                  font-size="24"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  BABY SHOWER
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Enchanting Baby Shower
+                  </h4>
+                  <p class="text-sm">Welcoming new beginnings</p>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio Item 6 -->
+            <div
+              class="portfolio-item relative overflow-hidden rounded-2xl group"
+              style="height: 350px"
+            >
+              <svg
+                class="portfolio-image w-full"
+                viewbox="0 0 400 350"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <defs>
+                  <lineargradient
+                    id="theme-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #667eea" />
+                    <stop offset="100%" style="stop-color: #764ba2" />
+                  </lineargradient>
+                </defs>
+                <rect width="400" height="350" fill="url(#theme-grad)" />
+                <circle cx="200" cy="140" r="50" fill="#d4af37" opacity="0.8" />
+                <path
+                  d="M 200 110 L 210 130 L 230 135 L 215 150 L 218 170 L 200 160 L 182 170 L 185 150 L 170 135 L 190 130 Z"
+                  fill="white"
+                />
+                <text
+                  x="200"
+                  y="240"
+                  font-family="Playfair Display"
+                  font-size="28"
+                  font-weight="bold"
+                  fill="white"
+                  text-anchor="middle"
+                >
+                  MASQUERADE
+                </text>
+                <text
+                  x="200"
+                  y="270"
+                  font-family="Montserrat"
+                  font-size="14"
+                  fill="#d4af37"
+                  text-anchor="middle"
+                >
+                  Themed Party
+                </text>
+              </svg>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+              >
+                <div class="p-6">
+                  <h4 class="font-display text-2xl font-bold mb-2">
+                    Luxury Theme Party
+                  </h4>
+                  <p class="text-sm">An evening of mystery and magic</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="section-padding">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              id="testimonials-title"
+              class="font-display text-5xl font-bold mb-4"
+              style="color: #d4af37"
+            >
+              What Our Clients Say
+            </h2>
+            <p class="text-xl text-gray-300">
+              Real stories from real celebrations
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "Ramgarhia Events transformed our wedding into an absolute fairy
+                tale! Every detail was perfect, from the stunning floral
+                arrangements to the seamless coordination. They truly understood
+                our vision and brought it to life beyond our wildest dreams."
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  S
+                </div>
+                <div>
+                  <h4 class="font-semibold">Sarah &amp; Michael Thompson</h4>
+                  <p class="text-sm text-gray-400">Wedding - June 2024</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "Our corporate gala was an overwhelming success thanks to this
+                incredible team! The professionalism, attention to detail, and
+                creative execution exceeded all expectations. Our clients and
+                partners are still talking about it!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  J
+                </div>
+                <div>
+                  <h4 class="font-semibold">Jennifer Rodriguez</h4>
+                  <p class="text-sm text-gray-400">
+                    Corporate Event - March 2024
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "My 50th birthday party was magical! The themed decorations were
+                breathtaking, and the coordination was flawless. Every guest
+                commented on how special and memorable the evening was. Worth
+                every penny!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  D
+                </div>
+                <div>
+                  <h4 class="font-semibold">David Chen</h4>
+                  <p class="text-sm text-gray-400">
+                    Birthday Party - August 2024
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "Planning our 25th anniversary was stress-free thanks to Elegant
+                Events. They handled everything with grace and professionalism,
+                creating a romantic atmosphere that perfectly captured our
+                journey together. Absolutely phenomenal!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  R
+                </div>
+                <div>
+                  <h4 class="font-semibold">Robert &amp; Lisa Martinez</h4>
+                  <p class="text-sm text-gray-400">Anniversary - May 2024</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "The baby shower they organized was simply adorable! From the
+                charming decorations to the thoughtful activities, every element
+                was perfect. Our guests loved it, and we have beautiful memories
+                to cherish forever."
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  E
+                </div>
+                <div>
+                  <h4 class="font-semibold">Emily Johnson</h4>
+                  <p class="text-sm text-gray-400">Baby Shower - July 2024</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card rounded-2xl p-8 hover-lift">
+              <div class="text-4xl mb-4" style="color: #d4af37">★★★★★</div>
+              <p class="text-gray-300 mb-6 italic">
+                "Our masquerade-themed party was the talk of the town! The
+                creativity, hospitality, and seamless execution were
+                outstanding. They turned our vision into reality and made it
+                even better than we imagined. Highly recommend!"
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  A
+                </div>
+                <div>
+                  <h4 class="font-semibold">Amanda Parker</h4>
+                  <p class="text-sm text-gray-400">
+                    Theme Party - September 2024
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="section-padding"
+        style="background: rgba(255, 255, 255, 0.03)"
+      >
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              id="contact-title"
+              class="font-display text-5xl font-bold mb-4"
+              style="color: #d4af37"
+            >
+              Get In Touch
+            </h2>
+            <p class="text-xl text-gray-300">
+              Let's start planning your unforgettable event today
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div>
+              <form id="contact-form" class="space-y-6">
+                <div>
+                  <label for="name" class="block text-sm font-semibold mb-2"
+                    >Your Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full px-4 py-3 rounded-lg"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-semibold mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 rounded-lg"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-semibold mb-2"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="w-full px-4 py-3 rounded-lg"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="event-type"
+                    class="block text-sm font-semibold mb-2"
+                    >Event Type</label
+                  >
+                  <select
+                    id="event-type"
+                    name="event-type"
+                    class="w-full px-4 py-3 rounded-lg"
+                  >
+                    <option value="">Select Event Type</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="baby-shower">Baby Shower</option>
+                    <option value="theme-party">Theme Party</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message" class="block text-sm font-semibold mb-2"
+                    >Tell Us About Your Event</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="w-full px-4 py-3 rounded-lg"
+                    placeholder="Share your vision, date, guest count, and any special requirements..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full btn-primary px-8 py-4 rounded-full font-semibold text-lg"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #d4af37 0%,
+                      #f4e4c1 100%
+                    );
+                    color: #1a1a2e;
+                  "
+                >
+                  Send Message
+                </button>
+                <div
+                  id="form-message"
+                  class="text-center mt-4 font-semibold hidden"
+                ></div>
+              </form>
+            </div>
+            <!-- Contact Information -->
+            <div class="space-y-8">
+              <div>
+                <h3
+                  class="font-display text-2xl font-bold mb-6"
+                  style="color: #d4af37"
+                >
+                  Contact Information
+                </h3>
+                <div class="space-y-6">
+                  <div class="flex items-start">
+                    <div class="text-2xl mr-4" style="color: #d4af37">📞</div>
+                    <div>
+                      <h4 class="font-semibold mb-1">Phone</h4>
+                      <p id="display-phone" class="text-gray-300">
+                        +1 (555) 123-4567
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="text-2xl mr-4" style="color: #d4af37">✉️</div>
+                    <div>
+                      <h4 class="font-semibold mb-1">Email</h4>
+                      <p id="display-email" class="text-gray-300">
+                        hello@elegantevents.com
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="text-2xl mr-4" style="color: #d4af37">📍</div>
+                    <div>
+                      <h4 class="font-semibold mb-1">Office Hours</h4>
+                      <p class="text-gray-300">
+                        Monday - Friday: 9:00 AM - 6:00 PM
+                      </p>
+                      <p class="text-gray-300">Saturday: 10:00 AM - 4:00 PM</p>
+                      <p class="text-gray-300">Sunday: By Appointment</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="rounded-2xl p-8"
+                style="
+                  background: rgba(212, 175, 55, 0.1);
+                  border: 1px solid rgba(212, 175, 55, 0.3);
+                "
+              >
+                <h4
+                  class="font-display text-xl font-bold mb-4"
+                  style="color: #d4af37"
+                >
+                  Why Choose Us?
+                </h4>
+                <ul class="space-y-3 text-sm">
+                  <li class="flex items-start">
+                    <span class="mr-2" style="color: #d4af37">✓</span>10+ years
+                    of excellence in event management
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-2" style="color: #d4af37">✓</span
+                    >Personalized attention to every detail
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-2" style="color: #d4af37">✓</span>Creative
+                    and innovative design solutions
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-2" style="color: #d4af37">✓</span>Trusted
+                    network of premium vendors
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-2" style="color: #d4af37">✓</span
+                    >Stress-free planning experience
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer
+        class="section-padding text-center"
+        style="
+          background: rgba(0, 0, 0, 0.5);
+          padding-top: 3%;
+          padding-bottom: 3%;
+        "
+      >
+        <div class="max-w-6xl mx-auto">
+          <h3
+            id="footer-company-name"
+            class="font-display text-3xl font-bold mb-4"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            "
+          >
+            Ramgarhia Events
+          </h3>
+          <p class="text-gray-400 mb-6">
+            Creating Unforgettable Moments Since 2014
+          </p>
+          <div class="flex justify-center space-x-6 mb-6">
+            <a href="#home" class="hover:text-yellow-400 transition-colors"
+              >Home</a
+            >
+            <a href="#about" class="hover:text-yellow-400 transition-colors"
+              >About</a
+            >
+            <a href="#services" class="hover:text-yellow-400 transition-colors"
+              >Services</a
+            >
+            <a href="#portfolio" class="hover:text-yellow-400 transition-colors"
+              >Portfolio</a
+            >
+            <a href="#contact" class="hover:text-yellow-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+          <p class="text-sm text-gray-500">
+            © 2024 Ramgarhia Events. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <!-- WhatsApp Float Button -->
+      <a
+        id="whatsapp-button"
+        href="https://wa.me/15551234567"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-float"
+      >
+        <svg width="60" height="60" viewbox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="30" fill="#25D366" />
+          <path
+            d="M30 15C21.7 15 15 21.7 15 30C15 32.4 15.6 34.7 16.7 36.7L15.1 42.9L21.5 41.3C23.4 42.3 25.6 42.9 28 42.9C36.3 42.9 43 36.2 43 27.9C43 19.6 36.3 15 30 15ZM35.7 33.2C35.5 33.7 34.6 34.2 34.1 34.3C33.6 34.4 33 34.5 32.4 34.3C32 34.2 31.5 34 30.9 33.7C28.3 32.6 26.6 29.9 26.5 29.7C26.3 29.6 25.2 28.2 25.2 26.7C25.2 25.2 25.9 24.5 26.2 24.2C26.5 23.9 26.8 23.8 27 23.8C27.2 23.8 27.4 23.8 27.6 23.8C27.8 23.8 28.1 23.7 28.4 24.4C28.7 25.1 29.4 26.6 29.5 26.7C29.6 26.9 29.6 27.1 29.5 27.3C29.4 27.5 29.3 27.6 29.2 27.8C29 28 28.9 28.1 28.7 28.3C28.5 28.5 28.4 28.7 28.6 29C28.8 29.3 29.4 30.3 30.3 31.1C31.5 32.1 32.4 32.4 32.7 32.6C33 32.8 33.2 32.7 33.4 32.5C33.6 32.3 34.2 31.6 34.4 31.3C34.6 31 34.9 31.1 35.1 31.2C35.4 31.3 36.9 32 37.2 32.2C37.5 32.4 37.7 32.5 37.8 32.6C37.9 32.9 37.9 33.5 37.7 34.1Z"
+            fill="white"
+          /></svg
+      ></a>
+    </div>
+    <script>
+      const defaultConfig = {
+        company_name: "Ramgarhia Events",
+        hero_tagline: "Creating Unforgettable Moments",
+        hero_subtitle: "Luxury Event Planning & Design",
+        about_title: "About Us",
+        services_title: "Our Services",
+        portfolio_title: "Our Portfolio",
+        testimonials_title: "What Our Clients Say",
+        contact_title: "Get In Touch",
+        contact_phone: "+1 (555) 123-4567",
+        contact_email: "hello@elegantevents.com",
+        contact_whatsapp: "+1 (555) 123-4567",
+        background_color: "#1a1a2e",
+        surface_color: "#ffffff",
+        text_color: "#ffffff",
+        primary_action_color: "#d4af37",
+        secondary_action_color: "#f4e4c1",
+        font_family: "Montserrat",
+        font_size: 16,
+      };
+
+      async function onConfigChange(config) {
+        const customFont = config.font_family || defaultConfig.font_family;
+        const baseSize = config.font_size || defaultConfig.font_size;
+        const backgroundColor =
+          config.background_color || defaultConfig.background_color;
+        const surfaceColor =
+          config.surface_color || defaultConfig.surface_color;
+        const textColor = config.text_color || defaultConfig.text_color;
+        const primaryColor =
+          config.primary_action_color || defaultConfig.primary_action_color;
+        const secondaryColor =
+          config.secondary_action_color || defaultConfig.secondary_action_color;
+
+        // Update company name
+        document.getElementById("nav-company-name").textContent =
+          config.company_name || defaultConfig.company_name;
+        document.getElementById("footer-company-name").textContent =
+          config.company_name || defaultConfig.company_name;
+
+        // Update hero section
+        document.getElementById("hero-tagline").textContent =
+          config.hero_tagline || defaultConfig.hero_tagline;
+        document.getElementById("hero-subtitle").textContent =
+          config.hero_subtitle || defaultConfig.hero_subtitle;
+
+        // Update section titles
+        document.getElementById("about-title").textContent =
+          config.about_title || defaultConfig.about_title;
+        document.getElementById("services-title").textContent =
+          config.services_title || defaultConfig.services_title;
+        document.getElementById("portfolio-title").textContent =
+          config.portfolio_title || defaultConfig.portfolio_title;
+        document.getElementById("testimonials-title").textContent =
+          config.testimonials_title || defaultConfig.testimonials_title;
+        document.getElementById("contact-title").textContent =
+          config.contact_title || defaultConfig.contact_title;
+
+        // Update contact information
+        document.getElementById("display-phone").textContent =
+          config.contact_phone || defaultConfig.contact_phone;
+        document.getElementById("display-email").textContent =
+          config.contact_email || defaultConfig.contact_email;
+
+        // Update WhatsApp button link
+        const whatsappNumber = (
+          config.contact_whatsapp || defaultConfig.contact_whatsapp
+        ).replace(/[^0-9+]/g, "");
+        document.getElementById(
+          "whatsapp-button"
+        ).href = `https://wa.me/${whatsappNumber}`;
+
+        // Apply font family
+        document.body.style.fontFamily = `${customFont}, 'Montserrat', sans-serif`;
+
+        // Apply font sizes
+        document.getElementById("nav-company-name").style.fontSize = `${
+          baseSize * 1.875
+        }px`;
+        document.getElementById("hero-tagline").style.fontSize = `${
+          baseSize * 3.75
+        }px`;
+        document.getElementById("hero-subtitle").style.fontSize = `${
+          baseSize * 1.5
+        }px`;
+
+        const sectionTitles = [
+          document.getElementById("about-title"),
+          document.getElementById("services-title"),
+          document.getElementById("portfolio-title"),
+          document.getElementById("testimonials-title"),
+          document.getElementById("contact-title"),
+        ];
+        sectionTitles.forEach((title) => {
+          if (title) title.style.fontSize = `${baseSize * 3.125}px`;
+        });
+
+        // Apply colors
+        document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #16213e 100%)`;
+        document.body.style.color = textColor;
+
+        // Update gradient colors for gold elements
+        const goldElements = document.querySelectorAll(
+          '[style*="stop-color:#d4af37"]'
+        );
+        goldElements.forEach((el) => {
+          el.style.stopColor = primaryColor;
+        });
+      }
+
+      // Form handling
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const messageDiv = document.getElementById("form-message");
+          messageDiv.textContent =
+            "Thank you for your message! We will get back to you soon.";
+          messageDiv.style.color = "#d4af37";
+          messageDiv.classList.remove("hidden");
+          this.reset();
+
+          setTimeout(() => {
+            messageDiv.classList.add("hidden");
+          }, 5000);
+        });
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileToggle = document.getElementById("mobile-menu-toggle");
+            if (mobileMenu && mobileMenu.classList.contains("active")) {
+              mobileMenu.classList.remove("active");
+              mobileToggle.classList.remove("active");
+            }
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", function () {
+          mobileMenu.classList.toggle("active");
+          mobileMenuToggle.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuToggle.contains(e.target)
+          ) {
+            mobileMenu.classList.remove("active");
+            mobileMenuToggle.classList.remove("active");
+          }
+        });
+      }
+
+      // Initialize Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () =>
+                  config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                },
+              },
+              {
+                get: () => config.surface_color || defaultConfig.surface_color,
+                set: (value) => {
+                  config.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                },
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                },
+              },
+              {
+                get: () =>
+                  config.primary_action_color ||
+                  defaultConfig.primary_action_color,
+                set: (value) => {
+                  config.primary_action_color = value;
+                  window.elementSdk.setConfig({ primary_action_color: value });
+                },
+              },
+              {
+                get: () =>
+                  config.secondary_action_color ||
+                  defaultConfig.secondary_action_color,
+                set: (value) => {
+                  config.secondary_action_color = value;
+                  window.elementSdk.setConfig({
+                    secondary_action_color: value,
+                  });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (value) => {
+                config.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              },
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (value) => {
+                config.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              },
+            },
+          }),
+          mapToEditPanelValues: (config) =>
+            new Map([
+              [
+                "company_name",
+                config.company_name || defaultConfig.company_name,
+              ],
+              [
+                "hero_tagline",
+                config.hero_tagline || defaultConfig.hero_tagline,
+              ],
+              [
+                "hero_subtitle",
+                config.hero_subtitle || defaultConfig.hero_subtitle,
+              ],
+              ["about_title", config.about_title || defaultConfig.about_title],
+              [
+                "services_title",
+                config.services_title || defaultConfig.services_title,
+              ],
+              [
+                "portfolio_title",
+                config.portfolio_title || defaultConfig.portfolio_title,
+              ],
+              [
+                "testimonials_title",
+                config.testimonials_title || defaultConfig.testimonials_title,
+              ],
+              [
+                "contact_title",
+                config.contact_title || defaultConfig.contact_title,
+              ],
+              [
+                "contact_phone",
+                config.contact_phone || defaultConfig.contact_phone,
+              ],
+              [
+                "contact_email",
+                config.contact_email || defaultConfig.contact_email,
+              ],
+              [
+                "contact_whatsapp",
+                config.contact_whatsapp || defaultConfig.contact_whatsapp,
+              ],
+            ]),
+        });
+      }
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9a94c789060784d1',t:'MTc2NDk1MDY2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
