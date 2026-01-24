@@ -1,0 +1,85 @@
+/* Navbar Custom Styles */
+.custom-navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff !important;
+  padding: 0.75rem 0;
+}
+
+.navbar-brand-custom {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #2c3e50 !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand-custom:hover {
+  color: #3498db !important;
+}
+
+.nav-link-custom {
+  font-weight: 500;
+  color: #2c3e50 !important;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link-custom:hover {
+  color: #3498db !important;
+}
+
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-custom:hover::after,
+.nav-link-custom.active::after {
+  width: 80%;
+}
+
+.nav-link-custom.active {
+  color: #3498db !important;
+  font-weight: 600;
+}
+
+.book-demo-btn {
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.book-demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.book-demo-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .nav-link-custom {
+    margin: 0.25rem 0;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .book-demo-btn {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
