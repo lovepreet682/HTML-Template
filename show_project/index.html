@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramgharia Web Studio – Web Development Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#home" class="nav-logo">Ramgharia Web Studio</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-bg">
+        <img src="img/homepage.jpg" alt="" class="hero-bg-image">
+        <span class="hero-overlay" aria-hidden="true"></span>
+      </div>
+      <div class="hero-content">
+        <span class="hero-badge">Full-Stack Developer</span>
+        <h1 class="hero-title">My Web Development Projects</h1>
+        <p class="hero-subtitle">Modern, responsive websites and web apps—from frontend to backend. Built to impress and deliver.</p>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="section-label">About Me</h2>
+      <div class="about-content">
+        <p class="about-lead">I build websites and web applications that look great and work smoothly.</p>
+        <p class="about-text">I focus on clean code, responsive design, and user experience. Each project here is built with attention to detail—whether it’s a business site, a cafe or gym website, or a full-stack application. I work with modern frontend and backend technologies so your idea becomes a fast, scalable product.</p>
+        <p class="about-text">I’m ready to turn your requirements into a professional, client-ready solution. Browse my work below and reach out when you’re ready to start.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2 class="section-label">Technologies & Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="skill-category-title">Frontend</h3>
+          <ul class="skill-logos">
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" title="HTML5"><span>HTML</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" title="CSS3"><span>CSS</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"><span>JS</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" title="React"><span>React</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" title="Next.js"><span>Next.js</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">Backend</h3>
+          <ul class="skill-logos">
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js"><span>Node JS</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" alt="NestJS" title="NestJS"><span>Nest JS</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">Database</h3>
+          <ul class="skill-logos">
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" title="MySQL"><span>MySQL</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" title="MongoDB"><span>MongoDB</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">Other Tools</h3>
+          <ul class="skill-logos">
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" title="AWS"><span>AWS</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" title="GitHub"><span>GitHub</span></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" alt="Hosting" title="Hosting"><span>Hosting</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2 class="section-label">Featured Work</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/astrology.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Astrology Website</h2>
+            <p class="project-desc">Explore horoscopes, birth charts, and cosmic insights in a clean, engaging layout.</p>
+            <a href="https://sample-webiste.onrender.com/astrology" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/coffe_cafe.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Coffee Cafe Website</h2>
+            <p class="project-desc">Menu, ambiance, and ordering experience for a cozy coffee shop brand.</p>
+            <a href="https://sample-webiste.onrender.com/coffe_cafe" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/event.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Event Management Website</h2>
+            <p class="project-desc">Plan, promote, and manage events with schedules and registration flows.</p>
+            <a href="https://sample-webiste.onrender.com/event" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/gym.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Gym Website</h2>
+            <p class="project-desc">Membership info, class schedules, and fitness programs in a strong, energetic design.</p>
+            <a href="https://sample-webiste.onrender.com/gym_index" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/travller.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Tour & Traveller Website</h2>
+            <p class="project-desc">Destinations, itineraries, and booking for travel enthusiasts.</p>
+            <a href="https://sample-webiste.onrender.com/travell_agent" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" aria-hidden="true">
+            <img src="img/tuition.png" alt="">
+          </div>
+          <div class="project-content">
+            <h2 class="project-name">Tuition Center Website</h2>
+            <p class="project-desc">Courses, schedules, and enrollment for students and parents.</p>
+            <a href="https://sample-webiste.onrender.com/tuition" target="_blank" rel="noopener noreferrer" class="btn-view">View Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <p class="contact-text">Interested in working together?</p>
+      <div class="contact-info">
+        <a href="mailto:lovepreet2022745@gmail.com" class="contact-link">
+          <span class="contact-label">Email</span>
+          lovepreet2022745@gmail.com
+        </a>
+        <a href="tel:+918264274826" class="contact-link">
+          <span class="contact-label">Phone</span>
+          8264274826
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-copy">© 2026 Ramgharia Web Studio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

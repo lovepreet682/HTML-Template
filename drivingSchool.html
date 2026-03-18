@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveWise Driving School – Learn to Drive with Confidence</title>
+  <meta name="description" content="Professional driving lessons for beginners and advanced drivers. Flexible schedules, certified instructors, and high pass rates.">
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --card: #1e2530;
+      --accent: #f97316;
+      --accent2: #fb923c;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: #30363d;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
+
+    /* NAV */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem; height: 64px;
+    }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: var(--muted); text-decoration: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--card); }
+    .nav-cta { background: var(--accent); color: #fff !important; border-radius: 8px !important; padding: 0.4rem 1rem !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--accent2) !important; color: #fff !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--text); padding: 0.25rem; }
+    .mobile-menu { display: none; background: var(--surface); border-bottom: 1px solid var(--border); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 0.85rem 1.5rem; color: var(--muted); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:hover { color: var(--text); background: var(--card); }
+
+    /* PAGES */
+    .page { display: none; padding-top: 64px; min-height: 100%; }
+    .page.active { display: block; }
+
+    /* HERO */
+    .hero {
+      min-height: 92%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0d1117 0%, #1a2340 50%, #0d1117 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px; opacity: 0.3;
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: 4rem 1.5rem; max-width: 800px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3); color: var(--accent); padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.1; margin: 0 0 1.25rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(249,115,22,0.35); }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(249,115,22,0.45); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text); padding: 0.9rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, background 0.2s; margin-left: 1rem; }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(249,115,22,0.08); }
+    .hero-stats { display: flex; gap: 2.5rem; justify-content: center; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* SECTIONS */
+    .section { padding: 5rem 1.5rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin: 0 0 1rem; line-height: 1.2; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; }
+
+    /* CARDS */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .icon-box { width: 48px; height: 48px; border-radius: 10px; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 1rem; flex-shrink: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+    /* TESTIMONIALS */
+    .testimonial-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+    .stars { color: var(--accent); display: flex; gap: 0.15rem; margin-bottom: 0.75rem; }
+    .testimonial-text { color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 1.25rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #f59e0b); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: #fff; flex-shrink: 0; }
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-role { font-size: 0.8rem; color: var(--muted); }
+
+    /* COURSE CARDS */
+    .course-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .course-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .course-header { padding: 1.5rem 1.75rem; border-bottom: 1px solid var(--border); }
+    .course-badge { display: inline-block; padding: 0.25rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+    .badge-green { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .badge-orange { background: rgba(249,115,22,0.12); color: var(--accent); }
+    .badge-blue { background: rgba(99,102,241,0.12); color: #818cf8; }
+    .course-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.25rem; margin: 0 0 0.5rem; }
+    .course-body { padding: 1.5rem 1.75rem; }
+    .course-price { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .course-price span { font-size: 0.9rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+    .benefit-list { list-style: none; margin: 1.25rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .benefit-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--muted); }
+    .benefit-list li svg { color: #4ade80; flex-shrink: 0; }
+
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; position: relative; background: var(--card); border: 1px solid var(--border); cursor: pointer; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; }
+    .gallery-overlay { position: absolute; inset: 0; background: rgba(249,115,22,0.15); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+
+    /* ABOUT */
+    .about-photo { border-radius: 16px; background: linear-gradient(135deg, var(--card) 0%, #1a2340 100%); border: 1px solid var(--border); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; }
+    .value-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+
+    /* CONTACT */
+    .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+    .form-field { margin-bottom: 1.25rem; }
+    .form-field label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .form-field input, .form-field textarea, .form-field select { width: 100%; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
+    .form-field textarea { resize: vertical; min-height: 130px; }
+    .form-success { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; border-radius: 10px; padding: 1rem 1.25rem; display: none; margin-bottom: 1rem; }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder { background: var(--card); border: 1px solid var(--border); border-radius: 14px; height: 320px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: var(--muted); overflow: hidden; position: relative; }
+    .map-pin-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.4; }
+
+    /* FOOTER */
+    .site-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3.5rem 1.5rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.75rem; }
+    .footer-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+    .footer-heading { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); margin-bottom: 1rem; }
+    .footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+    .social-links { display: flex; gap: 0.5rem; }
+    .social-btn { width: 36px; height: 36px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); cursor: pointer; transition: color 0.2s, border-color 0.2s; text-decoration: none; }
+    .social-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; }
+    .whatsapp-btn { display: flex; align-items: center; gap: 0.6rem; background: #25d366; color: #fff; padding: 0.75rem 1.25rem; border-radius: 100px; font-weight: 700; font-size: 0.9rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.45); transition: transform 0.2s, box-shadow 0.2s; }
+    .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+      .hero-cta { display: flex; flex-direction: column; align-items: center; }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- NAVIGATION -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+   <div class="nav-inner"><a href="#" class="nav-logo" onclick="showPage('home');return false;">
+     <svg width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
+     </svg><span id="nav-logo-text">DriveWise</span> </a>
+    <ul class="nav-links" role="list">
+     <li><a href="#" onclick="showPage('home');return false;" id="nav-home" class="active">Home</a></li>
+     <li><a href="#" onclick="showPage('about');return false;" id="nav-about">About</a></li>
+     <li><a href="#" onclick="showPage('courses');return false;" id="nav-courses">Courses</a></li>
+     <li><a href="#" onclick="showPage('gallery');return false;" id="nav-gallery">Gallery</a></li>
+     <li><a href="#" onclick="showPage('contact');return false;" id="nav-contact" class="nav-cta">Contact Us</a></li>
+    </ul><button class="hamburger" onclick="toggleMobile()" aria-label="Toggle menu" aria-expanded="false" id="hamburger-btn"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+   </div>
+   <div class="mobile-menu" id="mobile-menu" role="menu"><a href="#" onclick="showPage('home');toggleMobile();return false;">Home</a> <a href="#" onclick="showPage('about');toggleMobile();return false;">About</a> <a href="#" onclick="showPage('courses');toggleMobile();return false;">Courses</a> <a href="#" onclick="showPage('gallery');toggleMobile();return false;">Gallery</a> <a href="#" onclick="showPage('contact');toggleMobile();return false;">Contact Us</a>
+   </div>
+  </nav><!-- HOME PAGE -->
+  <main id="page-home" class="page active" role="main"><!-- HERO -->
+   <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+     <div class="hero-badge fade-up"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> <span>Certified Driving Instructors</span>
+     </div>
+     <h1 id="hero-heading" class="fade-up delay-1"><span id="hero-headline-text">Learn to Drive</span><br><span>with Confidence</span></h1>
+     <p class="fade-up delay-2" id="hero-sub-text">Professional instructors, flexible schedules, and a proven track record of producing safe, skilled drivers since 2005.</p>
+     <div class="hero-cta fade-up delay-3"><button class="btn-primary" onclick="showPage('courses')"> <i data-lucide="book-open" style="width:18px;height:18px;"></i> View Our Courses </button> <button class="btn-outline" onclick="showPage('contact')"> Get in Touch </button>
+     </div>
+     <div class="hero-stats fade-up delay-4">
+      <div class="stat-item">
+       <div class="stat-num">
+        2,500+
+       </div>
+       <div class="stat-label">
+        Students Passed
+       </div>
+      </div>
+      <div class="stat-item">
+       <div class="stat-num">
+        98%
+       </div>
+       <div class="stat-label">
+        Pass Rate
+       </div>
+      </div>
+      <div class="stat-item">
+       <div class="stat-num">
+        18+
+       </div>
+       <div class="stat-label">
+        Years Experience
+       </div>
+      </div>
+      <div class="stat-item">
+       <div class="stat-num">
+        12
+       </div>
+       <div class="stat-label">
+        Expert Instructors
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- INTRO / WHY CHOOSE US -->
+   <section class="section" aria-labelledby="why-heading">
+    <div class="section-inner">
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="about-split">
+      <div>
+       <p class="section-tag">Why Choose Us</p>
+       <h2 class="section-title" id="why-heading">The smarter way to learn driving</h2>
+       <p class="section-sub">At DriveWise, we combine expert instruction with a friendly, supportive environment. We go beyond passing tests — we build confident, safe drivers for life.</p>
+       <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+         <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><span style="color:var(--muted);">DVSA-approved instructors with 10+ years teaching experience</span>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+         <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><span style="color:var(--muted);">Modern dual-control vehicles for maximum safety</span>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+         <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><span style="color:var(--muted);">Flexible lesson times including evenings and weekends</span>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+         <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div><span style="color:var(--muted);">Pick-up and drop-off from your home or workplace</span>
+        </div>
+       </div><button class="btn-primary" style="margin-top:2rem;" onclick="showPage('about')">Learn More About Us</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+       <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">
+         🚗
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.25rem;">
+         Beginner
+        </div>
+        <div style="font-size:0.85rem;color:var(--muted);">
+         Start from scratch
+        </div>
+       </div>
+       <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">
+         🏆
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.25rem;">
+         Advanced
+        </div>
+        <div style="font-size:0.85rem;color:var(--muted);">
+         Master the roads
+        </div>
+       </div>
+       <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">
+         🔄
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.25rem;">
+         Refresher
+        </div>
+        <div style="font-size:0.85rem;color:var(--muted);">
+         Regain confidence
+        </div>
+       </div>
+       <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">
+         📋
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:0.25rem;">
+         Test Prep
+        </div>
+        <div style="font-size:0.85rem;color:var(--muted);">
+         Pass first time
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <hr class="divider"><!-- FEATURES -->
+   <section class="section" aria-labelledby="features-heading">
+    <div class="section-inner">
+     <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-tag">Our Advantages</p>
+      <h2 class="section-title" id="features-heading">Everything you need to succeed</h2>
+     </div>
+     <div class="grid-3">
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="user-check" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">Expert Instructors</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">All our instructors are fully qualified, patient, and passionate about teaching safe driving.</p>
+      </div>
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="calendar" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">Flexible Scheduling</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">Book lessons that fit your busy lifestyle — mornings, evenings, or weekends. Your time, your pace.</p>
+      </div>
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="car" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">Modern Vehicles</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">Learn in late-model, dual-control cars that meet all safety standards and feel great to drive.</p>
+      </div>
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="target" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">98% Pass Rate</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">Our structured curriculum and dedicated coaching produce outstanding test results, time after time.</p>
+      </div>
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="map-pin" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">Pick-up Service</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">We pick you up from home, work, or school — making lessons as convenient as possible.</p>
+      </div>
+      <div class="card">
+       <div class="icon-box">
+        <i data-lucide="award" style="width:22px;height:22px;"></i>
+       </div>
+       <h3 style="font-size:1.05rem;margin:0 0 0.5rem;">Certified &amp; Accredited</h3>
+       <p style="color:var(--muted);font-size:0.9rem;line-height:1.6;margin:0;">Fully accredited driving school with government-approved instructor certifications and insurance.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <hr class="divider"><!-- TESTIMONIALS -->
+   <section class="section" aria-labelledby="testimonials-heading">
+    <div class="section-inner">
+     <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-tag">Student Reviews</p>
+      <h2 class="section-title" id="testimonials-heading">What our students say</h2>
+     </div>
+     <div class="grid-3">
+      <div class="testimonial-card">
+       <div class="stars">
+        ★★★★★
+       </div>
+       <p class="testimonial-text">"I was terrified of driving, but my instructor made me feel so at ease. Passed first time! Couldn't recommend DriveWise more highly."</p>
+       <div class="testimonial-author">
+        <div class="author-avatar">
+         SJ
+        </div>
+        <div>
+         <div class="author-name">
+          Sarah Johnson
+         </div>
+         <div class="author-role">
+          Passed 1st attempt
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="testimonial-card">
+       <div class="stars">
+        ★★★★★
+       </div>
+       <p class="testimonial-text">"The Advanced course completely transformed my driving. I'm so much more confident on motorways and in bad weather now. Great value!"</p>
+       <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">
+         MT
+        </div>
+        <div>
+         <div class="author-name">
+          Marcus Thompson
+         </div>
+         <div class="author-role">
+          Advanced Course Graduate
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="testimonial-card">
+       <div class="stars">
+        ★★★★★
+       </div>
+       <p class="testimonial-text">"After 10 years off the road, the Refresher course gave me back my confidence. The instructor was incredibly patient and thorough."</p>
+       <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+         LP
+        </div>
+        <div>
+         <div class="author-name">
+          Linda Patel
+         </div>
+         <div class="author-role">
+          Refresher Course
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <hr class="divider"><!-- QUICK CONTACT -->
+   <section class="section" style="background:linear-gradient(135deg,#1a2340,#0d1117);" aria-labelledby="quickcontact-heading">
+    <div class="section-inner" style="text-align:center;max-width:680px;margin:0 auto;">
+     <div style="font-size:2.5rem;margin-bottom:1rem;">
+      🚦
+     </div>
+     <h2 class="section-title" id="quickcontact-heading">Ready to start your journey?</h2>
+     <p class="section-sub" style="margin:0 auto 2rem;">Book your first lesson today or give us a call. We're happy to answer any questions and find the right course for you.</p>
+     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;"><button class="btn-primary" onclick="showPage('contact')"> <i data-lucide="phone" style="width:18px;height:18px;"></i> Book a Lesson </button> <a href="tel:+15551234567" class="btn-outline" id="home-phone-link"> <i data-lucide="phone-call" style="width:18px;height:18px;"></i> <span id="home-phone-display">+1 (555) 123-4567</span> </a>
+     </div>
+    </div>
+   </section>
+  </main><!-- ABOUT PAGE -->
+  <div id="page-about" class="page" role="main">
+   <section class="section" style="background:linear-gradient(135deg,#1a2340 0%,#0d1117 100%);" aria-labelledby="about-hero-heading">
+    <div class="section-inner" style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 0;">
+     <p class="section-tag">About Us</p>
+     <h1 class="section-title" id="about-hero-heading">Driving excellence since 2005</h1>
+     <p class="section-sub" style="margin:0 auto;">We're more than a driving school. We're a community dedicated to creating safe, responsible, and confident drivers who'll stay safe on the road for life.</p>
+    </div>
+   </section>
+   <section class="section">
+    <div class="section-inner">
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="about-split">
+      <div class="about-photo">
+       <div style="font-size:4rem;">
+        🏫
+       </div>
+       <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--muted);">
+        DriveWise HQ
+       </div>
+       <div style="font-size:0.85rem;color:var(--muted);text-align:center;padding:0 2rem;">
+        123 Main Street · Your City
+       </div>
+      </div>
+      <div>
+       <p class="section-tag">Our Story</p>
+       <h2 class="section-title">Built on trust and expertise</h2>
+       <p style="color:var(--muted);line-height:1.75;margin-bottom:1rem;">Founded in 2005, DriveWise started as a single-instructor operation with a passion for road safety and quality education. Today, we're one of the region's most trusted driving schools with a fleet of modern vehicles and a team of 12 certified instructors.</p>
+       <p style="color:var(--muted);line-height:1.75;">We believe every learner is unique. That's why we tailor our teaching style to each student — whether you're a nervous beginner or an experienced driver looking to sharpen your skills.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <hr class="divider">
+   <section class="section">
+    <div class="section-inner">
+     <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-tag">Our Team</p>
+      <h2 class="section-title">Meet our instructors</h2>
+      <p class="section-sub" style="margin:0 auto;">Each of our instructors brings years of real-world experience and a genuine passion for teaching.</p>
+     </div>
+     <div class="grid-3">
+      <div class="card" style="text-align:center;">
+       <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#f59e0b);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;margin:0 auto 1rem;">
+        JM
+       </div>
+       <h3 style="margin:0 0 0.25rem;">James Mitchell</h3>
+       <div style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;">
+        Chief Instructor · 15 years
+       </div>
+       <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;margin:0;">DVSA-approved ADI. Specialist in nervous learners and pass-first-time preparation.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+       <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;margin:0 auto 1rem;">
+        RK
+       </div>
+       <h3 style="margin:0 0 0.25rem;">Rachel Kim</h3>
+       <div style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;">
+        Senior Instructor · 11 years
+       </div>
+       <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;margin:0;">Motorway and advanced driving expert. Passionate about building driver confidence.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+       <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#0891b2,#06b6d4);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;margin:0 auto 1rem;">
+        DO
+       </div>
+       <h3 style="margin:0 0 0.25rem;">David Osei</h3>
+       <div style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;">
+        Instructor · 8 years
+       </div>
+       <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;margin:0;">Specialises in young drivers and intensive courses. Known for patience and clear explanations.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <hr class="divider">
+   <section class="section">
+    <div class="section-inner">
+     <div style="text-align:center;margin-bottom:3rem;">
+      <p class="section-tag">Our Mission &amp; Values</p>
+      <h2 class="section-title">What drives us</h2>
+     </div>
+     <div class="grid-2">
+      <div class="value-item">
+       <div class="icon-box">
+        <i data-lucide="shield" style="width:20px;height:20px;"></i>
+       </div>
+       <div>
+        <h3 style="margin:0 0 0.4rem;font-size:1rem;">Safety First</h3>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">Every lesson, every route, every decision is guided by an unwavering commitment to safety for our students and all road users.</p>
+       </div>
+      </div>
+      <div class="value-item">
+       <div class="icon-box">
+        <i data-lucide="heart" style="width:20px;height:20px;"></i>
+       </div>
+       <div>
+        <h3 style="margin:0 0 0.4rem;font-size:1rem;">Student-Centred</h3>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">We adapt our approach to each learner. No two students are the same, so no two courses should be either.</p>
+       </div>
+      </div>
+      <div class="value-item">
+       <div class="icon-box">
+        <i data-lucide="star" style="width:20px;height:20px;"></i>
+       </div>
+       <div>
+        <h3 style="margin:0 0 0.4rem;font-size:1rem;">Excellence</h3>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">We hold ourselves to the highest standards — in our teaching, our vehicles, our communication, and our results.</p>
+       </div>
+      </div>
+      <div class="value-item">
+       <div class="icon-box">
+        <i data-lucide="users" style="width:20px;height:20px;"></i>
+       </div>
+       <div>
+        <h3 style="margin:0 0 0.4rem;font-size:1rem;">Community</h3>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">We're proud to be part of our local community — contributing to safer roads for everyone in the area.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- COURSES PAGE -->
+  <div id="page-courses" class="page" role="main">
+   <section class="section" style="background:linear-gradient(135deg,#1a2340 0%,#0d1117 100%);" aria-labelledby="courses-hero-heading">
+    <div class="section-inner" style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 0;">
+     <p class="section-tag">Our Courses</p>
+     <h1 class="section-title" id="courses-hero-heading">Find the right course for you</h1>
+     <p class="section-sub" style="margin:0 auto;">From complete beginners to drivers looking to sharpen their skills, we have a course designed for your needs and goals.</p>
+    </div>
+   </section>
+   <section class="section">
+    <div class="section-inner">
+     <div class="grid-3"><!-- BEGINNER -->
+      <div class="course-card">
+       <div class="course-header"><span class="course-badge badge-green">Beginner</span>
+        <h2 class="course-title">Beginner Driving Course</h2>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">Perfect for those who have never sat behind the wheel. We'll take you from absolute zero to test-ready, step by step.</p>
+       </div>
+       <div class="course-body">
+        <div class="course-price">
+         $349 <span>/ full course</span>
+        </div>
+        <ul class="benefit-list">
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>20 hours of structured lessons</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Theory test preparation included</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Highway code guidance</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Mock test included</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Progress reports after every lesson</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Dual-control vehicle for safety</li>
+        </ul><button class="btn-primary" style="width:100%;" onclick="showPage('contact')">Book This Course</button>
+       </div>
+      </div><!-- ADVANCED -->
+      <div class="course-card" style="border-color:var(--accent);position:relative;">
+       <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:0.72rem;font-weight:700;padding:0.25rem 0.9rem;border-radius:100px;letter-spacing:0.08em;white-space:nowrap;">
+        MOST POPULAR
+       </div>
+       <div class="course-header"><span class="course-badge badge-orange">Advanced</span>
+        <h2 class="course-title">Advanced Driving Course</h2>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">Take your skills to the next level. Ideal for licence holders who want to become truly excellent drivers.</p>
+       </div>
+       <div class="course-body">
+        <div class="course-price">
+         $249 <span>/ full course</span>
+        </div>
+        <ul class="benefit-list">
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>12 hours of advanced technique</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Motorway &amp; night driving</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Hazard perception training</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Eco-driving &amp; fuel efficiency</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>IAM qualification pathway</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Certificate of completion</li>
+        </ul><button class="btn-primary" style="width:100%;" onclick="showPage('contact')">Book This Course</button>
+       </div>
+      </div><!-- REFRESHER -->
+      <div class="course-card">
+       <div class="course-header"><span class="course-badge badge-blue">Refresher</span>
+        <h2 class="course-title">Refresher Driving Course</h2>
+        <p style="color:var(--muted);font-size:0.9rem;margin:0;line-height:1.6;">Haven't driven in a while? Build back your confidence and brush up on modern road rules and techniques.</p>
+       </div>
+       <div class="course-body">
+        <div class="course-price">
+         $149 <span>/ 6 hours</span>
+        </div>
+        <ul class="benefit-list">
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Tailored to your weak areas</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Updated highway code review</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Regain road confidence fast</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Flexible lesson scheduling</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Reassessment report included</li>
+         <li><i data-lucide="check-circle" style="width:16px;height:16px;"></i>Patient, non-judgmental teaching</li>
+        </ul><button class="btn-primary" style="width:100%;" onclick="showPage('contact')">Book This Course</button>
+       </div>
+      </div>
+     </div><!-- EXTRAS -->
+     <div style="margin-top:3rem;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:14px;display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+      <div>
+       <h3 style="margin:0 0 0.4rem;">Not sure which course is right for you?</h3>
+       <p style="color:var(--muted);margin:0;font-size:0.9rem;">Give us a call or send a message — we'll help you pick the perfect programme.</p>
+      </div><button class="btn-primary" onclick="showPage('contact')"> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> Ask Us Anything </button>
+     </div>
+    </div>
+   </section>
+  </div><!-- GALLERY PAGE -->
+  <div id="page-gallery" class="page" role="main">
+   <section class="section" style="background:linear-gradient(135deg,#1a2340 0%,#0d1117 100%);" aria-labelledby="gallery-hero-heading">
+    <div class="section-inner" style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 0;">
+     <p class="section-tag">Gallery</p>
+     <h1 class="section-title" id="gallery-hero-heading">Life at DriveWise</h1>
+     <p class="section-sub" style="margin:0 auto;">A look at our vehicles, training sessions, and the moments when our students achieve their driving goals.</p>
+    </div>
+   </section>
+   <section class="section">
+    <div class="section-inner">
+     <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;" role="group" aria-label="Gallery filter"><button class="gallery-filter-btn active-filter" onclick="filterGallery('all',this)" style="padding:0.4rem 1rem;border-radius:8px;border:1px solid var(--accent);background:rgba(249,115,22,0.12);color:var(--accent);font-weight:600;font-size:0.85rem;cursor:pointer;">All</button> <button class="gallery-filter-btn" onclick="filterGallery('lessons',this)" style="padding:0.4rem 1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-weight:500;font-size:0.85rem;cursor:pointer;">Lessons</button> <button class="gallery-filter-btn" onclick="filterGallery('vehicles',this)" style="padding:0.4rem 1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-weight:500;font-size:0.85rem;cursor:pointer;">Vehicles</button> <button class="gallery-filter-btn" onclick="filterGallery('students',this)" style="padding:0.4rem 1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-weight:500;font-size:0.85rem;cursor:pointer;">Students</button>
+     </div>
+     <div class="gallery-grid" id="gallery-grid"><!-- items injected by JS -->
+     </div>
+    </div>
+   </section>
+  </div><!-- CONTACT PAGE -->
+  <div id="page-contact" class="page" role="main">
+   <section class="section" style="background:linear-gradient(135deg,#1a2340 0%,#0d1117 100%);" aria-labelledby="contact-hero-heading">
+    <div class="section-inner" style="text-align:center;max-width:700px;margin:0 auto;padding:3rem 0;">
+     <p class="section-tag">Contact Us</p>
+     <h1 class="section-title" id="contact-hero-heading">Get in touch today</h1>
+     <p class="section-sub" style="margin:0 auto;">Ready to start driving, or have a question? We're here to help. Reach out in whichever way suits you best.</p>
+    </div>
+   </section>
+   <section class="section">
+    <div class="section-inner">
+     <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;" class="contact-split"><!-- INFO -->
+      <div>
+       <h2 style="font-size:1.3rem;margin:0 0 1.5rem;">Contact Information</h2>
+       <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem;">
+        <div class="contact-info-item">
+         <div class="contact-icon">
+          <i data-lucide="phone" style="width:20px;height:20px;"></i>
+         </div>
+         <div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">
+           Phone
+          </div><a href="tel:+15551234567" id="contact-phone-link" style="color:var(--text);text-decoration:none;font-weight:500;"><span id="contact-phone-text">+1 (555) 123-4567</span></a>
+         </div>
+        </div>
+        <div class="contact-info-item">
+         <div class="contact-icon">
+          <i data-lucide="mail" style="width:20px;height:20px;"></i>
+         </div>
+         <div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">
+           Email
+          </div><a href="mailto:info@drivewise.com" id="contact-email-link" style="color:var(--text);text-decoration:none;font-weight:500;"><span id="contact-email-text">info@drivewise.com</span></a>
+         </div>
+        </div>
+        <div class="contact-info-item">
+         <div class="contact-icon">
+          <i data-lucide="map-pin" style="width:20px;height:20px;"></i>
+         </div>
+         <div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">
+           Address
+          </div>
+          <div style="font-weight:500;" id="contact-address-text">
+           123 Main Street, Your City, ST 12345
+          </div>
+         </div>
+        </div>
+        <div class="contact-info-item">
+         <div class="contact-icon">
+          <i data-lucide="clock" style="width:20px;height:20px;"></i>
+         </div>
+         <div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">
+           Hours
+          </div>
+          <div style="font-weight:500;">
+           Mon–Fri: 7am – 8pm
+          </div>
+          <div style="font-size:0.85rem;color:var(--muted);">
+           Sat–Sun: 8am – 6pm
+          </div>
+         </div>
+        </div>
+       </div><!-- MAP -->
+       <div class="map-placeholder" aria-label="Location map">
+        <div class="map-pin-grid"></div>
+        <div style="position:relative;z-index:1;text-align:center;">
+         <div style="font-size:2.5rem;margin-bottom:0.5rem;">
+          📍
+         </div>
+         <div style="font-weight:700;margin-bottom:0.25rem;">
+          DriveWise Driving School
+         </div>
+         <div style="font-size:0.85rem;color:var(--muted);" id="map-address-text">
+          123 Main Street, Your City
+         </div><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;color:var(--accent);font-size:0.85rem;font-weight:600;text-decoration:none;"> <i data-lucide="external-link" style="width:14px;height:14px;"></i> Open in Google Maps </a>
+        </div>
+       </div>
+      </div><!-- FORM -->
+      <div>
+       <h2 style="font-size:1.3rem;margin:0 0 1.5rem;">Send Us a Message</h2>
+       <div class="form-success" id="form-success-msg"><strong>✅ Message sent!</strong> We'll get back to you within 24 hours.
+       </div>
+       <form id="contact-form" onsubmit="handleFormSubmit(event)" novalidate>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+         <div class="form-field"><label for="cf-name">Full Name *</label> <input type="text" id="cf-name" name="name" placeholder="Your full name" required>
+         </div>
+         <div class="form-field"><label for="cf-phone">Phone Number</label> <input type="tel" id="cf-phone" name="phone" placeholder="Your phone number">
+         </div>
+        </div>
+        <div class="form-field"><label for="cf-email">Email Address *</label> <input type="email" id="cf-email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-field"><label for="cf-course">Interested Course</label> <select id="cf-course" name="course"> <option value="">Select a course (optional)</option> <option>Beginner Driving Course</option> <option>Advanced Driving Course</option> <option>Refresher Driving Course</option> <option>Not sure yet</option> </select>
+        </div>
+        <div class="form-field"><label for="cf-message">Message *</label> <textarea id="cf-message" name="message" placeholder="Tell us about your driving goals or ask any questions..." required></textarea>
+        </div><button type="submit" class="btn-primary" style="width:100%;" id="form-submit-btn"> <i data-lucide="send" style="width:18px;height:18px;"></i> Send Message </button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+   <div class="footer-inner">
+    <div class="footer-grid">
+     <div>
+      <div class="footer-logo" id="footer-logo-text">
+       DriveWise
+      </div>
+      <p class="footer-desc" id="footer-tagline-text">Your journey to safe driving starts here. Professional instruction, proven results, and a passion for road safety since 2005.</p>
+      <div class="social-links" style="margin-top:1.25rem;" aria-label="Social media links"><a href="#" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a> <a href="#" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a> <a href="#" class="social-btn" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a> <a href="#" class="social-btn" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube" style="width:16px;height:16px;"></i></a>
+      </div>
+     </div>
+     <div>
+      <div class="footer-heading">
+       Quick Links
+      </div>
+      <ul class="footer-links">
+       <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+       <li><a href="#" onclick="showPage('about');return false;">About Us</a></li>
+       <li><a href="#" onclick="showPage('courses');return false;">Courses</a></li>
+       <li><a href="#" onclick="showPage('gallery');return false;">Gallery</a></li>
+       <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+      </ul>
+     </div>
+     <div>
+      <div class="footer-heading">
+       Courses
+      </div>
+      <ul class="footer-links">
+       <li><a href="#" onclick="showPage('courses');return false;">Beginner Course</a></li>
+       <li><a href="#" onclick="showPage('courses');return false;">Advanced Course</a></li>
+       <li><a href="#" onclick="showPage('courses');return false;">Refresher Course</a></li>
+       <li><a href="#" onclick="showPage('courses');return false;">Test Preparation</a></li>
+      </ul>
+     </div>
+     <div>
+      <div class="footer-heading">
+       Contact
+      </div>
+      <ul class="footer-links">
+       <li><a href="tel:+15551234567" id="footer-phone-link"><span id="footer-phone-text">+1 (555) 123-4567</span></a></li>
+       <li><a href="mailto:info@drivewise.com" id="footer-email-link"><span id="footer-email-text">info@drivewise.com</span></a></li>
+       <li><span style="color:var(--muted);font-size:0.9rem;" id="footer-address-text">123 Main Street, Your City</span></li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <div class="footer-copy">
+      © 2024 <span id="footer-copy-name">DriveWise Driving School</span>. All rights reserved.
+     </div>
+     <div style="font-size:0.8rem;color:var(--muted);">
+      Drive safe. Drive smart.
+     </div>
+    </div>
+   </div>
+  </footer><!-- WHATSAPP FLOAT --> <a href="https://wa.me/15551234567" id="whatsapp-btn" class="whatsapp-btn whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+   <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+   </svg><span>WhatsApp Us</span> </a>
+  <script>
+  // ---- GALLERY DATA ----
+  const galleryItems = [
+    { id: 1, emoji: '🚗', title: 'First Lesson Session', cat: 'lessons', color: '#1a2f1a' },
+    { id: 2, emoji: '🏎️', title: 'Fleet Vehicle – Toyota Corolla', cat: 'vehicles', color: '#1a1a2f' },
+    { id: 3, emoji: '🎉', title: 'Test Pass Celebration', cat: 'students', color: '#2f1a1a' },
+    { id: 4, emoji: '🛣️', title: 'Motorway Driving Practice', cat: 'lessons', color: '#1a2f2a' },
+    { id: 5, emoji: '🚙', title: 'Fleet Vehicle – Honda Civic', cat: 'vehicles', color: '#2f2a1a' },
+    { id: 6, emoji: '👩‍🎓', title: 'Certificate Presentation', cat: 'students', color: '#1a1f2f' },
+    { id: 7, emoji: '🌧️', title: 'Rain Driving Technique', cat: 'lessons', color: '#1a2f2f' },
+    { id: 8, emoji: '🔑', title: 'Pass Day – James & Instructor', cat: 'students', color: '#2f1a2f' },
+    { id: 9, emoji: '🅿️', title: 'Parallel Parking Practice', cat: 'lessons', color: '#242420' },
+  ];
+
+  function renderGallery(filter) {
+    const grid = document.getElementById('gallery-grid');
+    const filtered = filter === 'all' ? galleryItems : galleryItems.filter(i => i.cat === filter);
+    grid.innerHTML = '';
+    filtered.forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'gallery-item';
+      el.style.background = item.color;
+      el.innerHTML = `
+        <div class="gallery-thumb">
+          <div style="font-size:3.5rem;">${item.emoji}</div>
+          <div style="font-size:0.85rem;color:var(--muted);text-align:center;padding:0 1rem;">${item.title}</div>
+        </div>
+        <div class="gallery-overlay">
+          <i data-lucide="zoom-in" style="width:32px;height:32px;color:var(--accent);"></i>
+        </div>
+      `;
+      grid.appendChild(el);
+    });
+    lucide.createIcons();
+  }
+
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.gallery-filter-btn').forEach(b => {
+      b.style.borderColor = 'var(--border)';
+      b.style.background = 'transparent';
+      b.style.color = 'var(--muted)';
+    });
+    btn.style.borderColor = 'var(--accent)';
+    btn.style.background = 'rgba(249,115,22,0.12)';
+    btn.style.color = 'var(--accent)';
+    renderGallery(cat);
+  }
+
+  // ---- NAVIGATION ----
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo(0, 0);
+    if (id === 'gallery') renderGallery('all');
+  }
+
+  function toggleMobile() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+
+  // ---- FORM ----
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('form-submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i data-lucide="loader" style="width:18px;height:18px;"></i> Sending...';
+    lucide.createIcons();
+    setTimeout(() => {
+      document.getElementById('form-success-msg').style.display = 'block';
+      document.getElementById('contact-form').reset();
+      btn.disabled = false;
+      btn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px;"></i> Send Message';
+      lucide.createIcons();
+    }, 1200);
+  }
+
+  // ---- RESPONSIVE GRID FIX ----
+  function applyResponsiveGrids() {
+    const splits = document.querySelectorAll('.about-split, .contact-split');
+    splits.forEach(el => {
+      if (window.innerWidth < 768) {
+        el.style.gridTemplateColumns = '1fr';
+      } else {
+        el.style.gridTemplateColumns = '';
+      }
+    });
+  }
+  window.addEventListener('resize', applyResponsiveGrids);
+  applyResponsiveGrids();
+
+  // ---- ELEMENT SDK ----
+  const defaultConfig = {
+    school_name: 'DriveWise Driving School',
+    hero_headline: 'Learn to Drive',
+    hero_subtext: 'Professional instructors, flexible schedules, and a proven track record of producing safe, skilled drivers since 2005.',
+    phone_number: '+1 (555) 123-4567',
+    email_address: 'info@drivewise.com',
+    address: '123 Main Street, Your City, ST 12345',
+    whatsapp_number: '15551234567',
+    tagline: 'Your journey to safe driving starts here. Professional instruction, proven results, and a passion for road safety since 2005.',
+    background_color: '#0d1117',
+    surface_color: '#1e2530',
+    text_color: '#e6edf3',
+    accent_color: '#f97316',
+    muted_color: '#8b949e',
+    font_family: 'DM Sans',
+    font_size: 16,
+  };
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      const schoolName = config.school_name || defaultConfig.school_name;
+      const shortName = schoolName.split(' ')[0] || 'DriveWise';
+
+      // Nav
+      document.getElementById('nav-logo-text').textContent = shortName;
+      // Hero
+      document.getElementById('hero-headline-text').textContent = config.hero_headline || defaultConfig.hero_headline;
+      document.getElementById('hero-sub-text').textContent = config.hero_subtext || defaultConfig.hero_subtext;
+      // Phone
+      const phone = config.phone_number || defaultConfig.phone_number;
+      document.getElementById('home-phone-display').textContent = phone;
+      document.getElementById('home-phone-link').href = 'tel:' + phone.replace(/\D/g,'');
+      document.getElementById('contact-phone-text').textContent = phone;
+      document.getElementById('contact-phone-link').href = 'tel:' + phone.replace(/\D/g,'');
+      document.getElementById('footer-phone-text').textContent = phone;
+      document.getElementById('footer-phone-link').href = 'tel:' + phone.replace(/\D/g,'');
+      // Email
+      const email = config.email_address || defaultConfig.email_address;
+      document.getElementById('contact-email-text').textContent = email;
+      document.getElementById('contact-email-link').href = 'mailto:' + email;
+      document.getElementById('footer-email-text').textContent = email;
+      document.getElementById('footer-email-link').href = 'mailto:' + email;
+      // Address
+      const addr = config.address || defaultConfig.address;
+      document.getElementById('contact-address-text').textContent = addr;
+      document.getElementById('map-address-text').textContent = addr;
+      document.getElementById('footer-address-text').textContent = addr;
+      // WhatsApp
+      const wa = config.whatsapp_number || defaultConfig.whatsapp_number;
+      document.getElementById('whatsapp-btn').href = 'https://wa.me/' + wa;
+      // Footer
+      document.getElementById('footer-logo-text').textContent = shortName;
+      document.getElementById('footer-copy-name').textContent = schoolName;
+      document.getElementById('footer-tagline-text').textContent = config.tagline || defaultConfig.tagline;
+      // Colors
+      const bg = config.background_color || defaultConfig.background_color;
+      const surface = config.surface_color || defaultConfig.surface_color;
+      const text = config.text_color || defaultConfig.text_color;
+      const accent = config.accent_color || defaultConfig.accent_color;
+      const muted = config.muted_color || defaultConfig.muted_color;
+      document.body.style.background = bg;
+      document.documentElement.style.setProperty('--bg', bg);
+      document.documentElement.style.setProperty('--surface', surface);
+      document.documentElement.style.setProperty('--card', surface);
+      document.documentElement.style.setProperty('--text', text);
+      document.documentElement.style.setProperty('--accent', accent);
+      document.documentElement.style.setProperty('--muted', muted);
+      // Font
+      const font = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `'${font}', 'DM Sans', sans-serif`;
+      // Font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${baseSize}px`;
+    },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+        { get: () => config.muted_color || defaultConfig.muted_color, set: (v) => { config.muted_color = v; window.elementSdk.setConfig({ muted_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['school_name', config.school_name || defaultConfig.school_name],
+      ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+      ['hero_subtext', config.hero_subtext || defaultConfig.hero_subtext],
+      ['phone_number', config.phone_number || defaultConfig.phone_number],
+      ['email_address', config.email_address || defaultConfig.email_address],
+      ['address', config.address || defaultConfig.address],
+      ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number],
+      ['tagline', config.tagline || defaultConfig.tagline],
+    ])
+  });
+
+  lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9db8c6bac2ed4bda',t:'MTc3MzM4MTE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
